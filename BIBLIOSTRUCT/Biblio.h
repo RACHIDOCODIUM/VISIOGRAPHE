@@ -33,4 +33,20 @@ typedef struct newliste{
 typedef struct Sommet TypeSommet;
 typedef struct graphe Graphe;
 typedef struct eltadj EltAdj;
+/*           ------- Ajouter des tetes des primitives Pile, File, Liste pour les manupulatins du Graphes--*/
+typedef TypeCellule* Pile;
+Pile InitialiserPile();
+int EstPileVide(Pile);
+int EstPilePleine(Pile);
+int AccederSommet(Pile);
+void Empiler(Pile*,TypeDonnee);
+void Depiler(Pile*,TypeDonnee*);
+void DetruirePile(Pile*);
+typedef struct 
+{
+    TypeCellule *tete,*queue;
+}File;
+File InitialiserFile();
+int EstFileVide()
+
 #endif
