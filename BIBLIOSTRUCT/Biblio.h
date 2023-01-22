@@ -47,6 +47,10 @@ typedef struct
     TypeCellule *tete,*queue;
 }File;
 File InitialiserFile();
-int EstFileVide()
-
+int EstFileVide(File);
+int EstFilePleine(File);
+void Enfiler(File*,TypeDonnee);
+char Defiler(File);
+int AccederTete(File);
+void DetruireFile(File*);
 #endif
