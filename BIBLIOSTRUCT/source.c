@@ -57,7 +57,8 @@ free(q);
 File InitialiserFile()
 {
 File filevide;
-filevide.tete=NULL; /* liste vide : NULL */
+ filevide.tete=NULL; /* liste vide : NULL */
+ return filevide;
 }
 int EstFileVide(File F)
 {
@@ -96,10 +97,10 @@ TypeCellule *p;
 if (EstFileVide(*pF))
 return 1; /* retour d’un code d’erreur */
 *pelem = pF->tete->donnee; /* on renvoie l’élément */
-p = pF->tete; /* mémorisation de la tête de liste */
+p = pF->tete; 
 pF->tete = pF->tete->suivant; /* passage au suivant */
 free(p); 
-return 0
+return 0;
 }
 void DetruireFile(File *pF)
 {
@@ -112,4 +113,46 @@ p = p->suivant;
 free(q);
 }
 pF->tete = NULL; /* on met la liste à vide */
+}
+/*                                Liste                                           */
+Liste InitialiseListe()
+{
+    Liste *L;
+    L=NULL;
+    return L;
+}
+Liste InsererTeteListe(Liste L,TypeDonnee pelm)
+{
+    TypeCellule *nouv;
+    nouv=(Liste)malloc(sizeof(TypeCellule));
+    nouv->donnee=pelm;
+    nouv->suivant=L;
+    return nouv;
+}
+Liste InsererQueueListe(Liste L,TypeDonnee donnee)
+{
+    TypeCellule *new,*ptr;
+    new=(Liste)malloc(sizeof(TypeCellule));
+    new->donnee=donnee;
+    new->suivant=NULL;
+    if(L==NULL)
+    {
+        L=new;
+    }else
+    {
+      for(ptr=L;ptr->suivant!=NULL;ptr=ptr->suivant){}
+      ptr->suivant=new;
+    }
+ return L;
+}
+void Liberation(TypeCellule **pL)
+{
+TypeCellule *p;
+while (*pL != NULL) /* tant que la liste est non vide */
+{
+p = *pL;
+*pL = (*pL)->suivant; 
+free(p); 
+}
+*pL = NULL; /* on réinitialise la liste à vide */
 }

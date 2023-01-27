@@ -1,22 +1,12 @@
-#if _GRAPHE_H_
-#define _GRAPHE_H_
-typedef struct Cell{
-    int nbsommet;
-    int **Matrice;
-}Graphe;
-typedef struct cellsommet{
-    int num_som;
-    struct cellsucc *Succ;
-    struct cellsommet *suivant;
-}TypeSommet;
-typedef struct cellsucc{
-    int num_succ;
-    struct cellsommet *extremite;
-    struct cellsucc *suivant;
-}TypeSucc;
-typedef int TypeDonnee;
-typedef struct newliste{
-  TypeDonnee donnee;
-  struct newliste;
-}TypeCellule;
+#if defined(GRAPHE_H)
+#else 
+#define GRAPHE_H
+#include"../BIBLIOSTRUCT/Biblio.h"
+void InitialiserGraphe(Graphe*);
+int AjouterSommet(Graphe*,int);
+int AjouterArc(Graphe*,int,int,int);
+int SupprimerSommet(Graphe*,int);
+int SupprimerArc(Graphe*,int,int);
+void SupprimerGraphe(Graphe*);
+int LireFicher(char*,Graphe*); 
 #endif

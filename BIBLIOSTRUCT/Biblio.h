@@ -1,4 +1,4 @@
-/*Biblio.h-------------------------------*/
+ /*Biblio.h-------------------------------*/
 #if defined(BIBLIO_H)
 #else
 #define BIBLIO_H
@@ -38,9 +38,9 @@ typedef TypeCellule* Pile;
 Pile InitialiserPile();
 int EstPileVide(Pile);
 int EstPilePleine(Pile);
-int AccederSommet(Pile);
+int AccederSommet(Pile,TypeDonnee*);
 void Empiler(Pile*,TypeDonnee);
-void Depiler(Pile*,TypeDonnee*);
+int Depiler(Pile*,TypeDonnee*);
 void DetruirePile(Pile*);
 typedef struct 
 {
@@ -50,7 +50,12 @@ File InitialiserFile();
 int EstFileVide(File);
 int EstFilePleine(File);
 void Enfiler(File*,TypeDonnee);
-char Defiler(File);
-int AccederTete(File);
+char Defiler(File*,TypeDonnee*);
+int AccederTete(File,TypeDonnee*);
 void DetruireFile(File*);
+typedef TypeCellule* Liste;
+Liste InitialiseListe();
+Liste InsererTeteListe(Liste,TypeDonnee);
+Liste InsererQueueListe(Liste,TypeDonnee);
+void Liberation(TypeCellule**);
 #endif
